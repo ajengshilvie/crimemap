@@ -23,6 +23,7 @@ class DBHelper:
     def add_input(self, data):
         connection = self.connect()
         try:
+            # protection againts sql injections, awalnya pakai {}
             # The following introduces a deliberate security flaw.See section on SQL injection below
             query = "INSERT INTO crimes (description) VALUES (%s);"
             with connection.cursor() as cursor:
